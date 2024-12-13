@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetHealth - Gerenciamento de Saúde para Pets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/home_style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-paw"></i> PetHealth
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Funcionalidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <li class="nav-item">
+                            <a href="cadastro_login.html" class="nav-link" id="login-link">Entrar/Cadastrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pet.html" class="nav-link" id="data-link" style="display: none;">Dados</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a href="http://127.0.0.1:5001/cadastrar_pet" class="nav-link" id="pet-link" style="display: none;">Cadastrar Pet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="pet-view-link" style="display: none;">Visualizar Pet</a>
+                        </li>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/beautiful-shot-different-dog-breeds-resting.jpg" class="d-block w-100" alt="Pet 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Gerencie a Saúde do Seu Pet</h5>
+                    <p>Registre consultas, tratamentos e vacinas de forma prática.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/medium-shot-woman-cute-dog.jpg" class="d-block w-100" alt="Pet 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Receba Lembretes Automáticos</h5>
+                    <p>Nunca perca compromissos importantes, como consultas e vacinas.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./images/veterinarian-taking-care-pet.jpg" class="d-block w-100" alt="Pet 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Comunique-se com Veterinários</h5>
+                    <p>Facilite o envio de informações médicas do seu pet para veterinários.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+
+    <section id="features" class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/historico.webp" class="card-img-top" alt="Feature 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Histórico Médico</h5>
+                        <p class="card-text">Mantenha um registro detalhado de todas as consultas e tratamentos do seu pet.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/agendamento.jpg" class="card-img-top" alt="Feature 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Agendamentos</h5>
+                        <p class="card-text">Agende exames e procedimentos estéticos com facilidade.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/lembrete.png" class="card-img-top" alt="Feature 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Lembretes Automatizados</h5>
+                        <p class="card-text">Receba notificações sobre vacinações e consultas do seu pet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="text-center">Sobre</h2>
+            <p class="text-center">Desenvolvido no curso de Engenharia de Software da Universidade de Vassouras, Maricá - RJ, o PetHealth é uma plataforma web projetada para otimizar o gerenciamento da saúde de animais de estimação. O aplicativo permite que proprietários registrem e acompanhem consultas, tratamentos, vacinações e recebam lembretes automatizados, facilitando a comunicação com veterinários e o monitoramento do bem-estar dos pets.</p>
+            <p class="text-center">Utilizando tecnologias modernas como Node.js, JavaScript, HTML, CSS e MongoDB, o PetHealth foi desenvolvido com metodologias ágeis, como Scrum, garantindo flexibilidade e adaptação às necessidades do usuário. Este projeto representa uma aplicação prática e inovadora, com o potencial de impactar positivamente a vida de animais e seus proprietários.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center contact-header">Contato</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feedback-form">
+                        <h3>Deixe Seu Feedback</h3>
+                        <form id="emailForm">
+                            <div class="mb-3">
+                              <label for="name" class="form-label">Nome</label>
+                              <input type="text" class="form-control" id="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="mb-3">
+                              <label for="email" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="email" placeholder="Seu email" required>
+                            </div>
+                            <div class="mb-3">
+                              <label for="message" class="form-label">Mensagem</label>
+                              <textarea class="form-control" id="message" rows="4" placeholder="Sua mensagem" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                          </form>
+                          
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Informações de Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Universidade de Vassouras, Maricá - RJ</p>
+                    <p><i class="fas fa-phone-alt"></i> +55 21 99999-9999</p>
+                    <p><i class="fas fa-envelope"></i> pethealth.contato@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4">
+        <p>&copy; 2024 PetHealth. Todos os direitos reservados.</p>
+    </footer>
+    <script src="js/home.js" defer></script>
+   
+</body>
+</html>

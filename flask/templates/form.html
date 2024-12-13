@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Pet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form_style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Pet</h1>
+        <form id="petForm">
+            <div class="mb-3">
+                <label for="petName" class="form-label">Nome do Pet</label>
+                <input type="text" class="form-control" id="petName" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="species" class="form-label">Espécie</label>
+                <select class="form-select" id="species" name="species" required>
+                    <option value="">Selecione a espécie</option>
+                    <option value="gato">Gato</option>
+                    <option value="cachorro">Cachorro</option>
+                    <option value="pássaro">Pássaro</option>
+                    <option value="reptil">Réptil</option>
+                    <option value="peixe">Peixe</option>
+                    <option value="cavalo">Cavalo</option>
+                    <option value="roedor">Roedor</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="breed" class="form-label">Raça</label>
+                <select class="form-select" id="breed" name="breed" required>
+                    <option value="">Selecione a raça</option>
+                </select>
+                <div id="customBreedContainer" class="mt-2" style="display: none;">
+                    <label for="customBreed" class="form-label">Outra raça</label>
+                    <input type="text" class="form-control" id="customBreed" name="customBreed" placeholder="Insira a raça personalizada">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Idade</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="mb-3">
+                <label for="weight" class="form-label">Peso (kg)</label>
+                <input type="number" class="form-control" id="weight" name="weight" step="0.1" required>
+            </div>
+            <div class="mb-3">
+                <label for="vaccinated" class="form-label">Vacinado</label>
+                <select class="form-select" id="vaccinated" name="vaccinated" required>
+                    <option value="sim">Sim</option>
+                    <option value="não">Não</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="additionalInfo" class="form-label">Informações Adicionais</label>
+                <textarea class="form-control" id="additionalInfo" name="additionalInfo"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+</body>
+</html>

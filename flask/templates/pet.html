@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PETHEALTH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pet_style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>PETHEALTH</h1>
+      <div>
+        <button onclick="window.location.href='/cadastrar_pet'">Cadastrar Novo Pet</button>
+      </div>
+    </header>
+
+    <section>
+      <div class="flex gap-4">
+        <div class="flex-1 bg-green-200 p-4 rounded-lg">
+          <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Imagem do Pet" class="rounded-lg mb-2" id="petImage">
+          <h2 class="text-lg font-bold" id="petName">Carregando...</h2>
+          <p id="petSpecies">Espécie: Carregando...</p>
+          <p id="ownerName">Raça: Carregando...</p>
+          <p id="petAge">Idade: Carregando...</p>
+          <p id="petWeight">Peso: Carregando...</p>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4" id="editButton">Editar Informações</button>
+        </div>
+
+        <div class="flex-1">
+          <form id="uploadImageForm" enctype="multipart/form-data" class="bg-gray-100 p-4 rounded-lg">
+            <label for="petImageUpload">Alterar Imagem:</label>
+            <input type="file" id="petImageUpload" name="petImage" accept="image/*" class="block mb-2">
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Salvar Imagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <form id="editForm" class="hidden bg-gray-100 p-4 rounded-lg mt-4">
+      <label for="editName">Nome:</label>
+      <input type="text" id="editName" name="name" class="block mb-2" />
+      <label for="editSpecies">Espécie:</label>
+      <input type="text" id="editSpecies" name="species" class="block mb-2" />
+      <label for="editAge">Idade:</label>
+      <input type="number" id="editAge" name="age" class="block mb-2" />
+      <label for="editWeight">Peso:</label>
+      <input type="number" id="editWeight" name="weight" class="block mb-2" />
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Salvar Informações</button>
+    </form>
+
+    <section id="recordsSection" class="mt-4">
+      <h2 class="section-title">Histórico do Pet</h2>
+
+      <div class="bg-green-200 p-4 rounded-lg mb-4">
+        <h3 class="font-bold text-lg">Vacinas</h3>
+        <ul id="vaccineList" class="list-disc pl-5">
+          <li>Carregando vacinas...</li>
+        </ul>
+      </div>
+
+      <div class="bg-green-200 p-4 rounded-lg">
+        <h3 class="font-bold text-lg">Exames</h3>
+        <ul id="examList" class="list-disc pl-5">
+          <li>Carregando exames...</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="addRecordsSection" class="mt-4">
+      <h2 class="section-title">Adicionar Registros</h2>
+
+      <div class="bg-blue-200 p-4 rounded-lg mb-4">
+        <h3 class="font-bold text-lg">Adicionar Vacina</h3>
+        <form id="addVaccineForm">
+          <label for="vaccineName">Nome da Vacina:</label>
+          <input type="text" id="vaccineName" name="name" class="block mb-2" required />
+          <label for="vaccineDate">Data da Vacina:</label>
+          <input type="date" id="vaccineDate" name="date" class="block mb-2" required />
+          <label for="vaccineTime">Horário da Vacina:</label>
+          <input type="time" id="vaccineTime" name="time" class="block mb-2" required />
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Adicionar Vacina</button>
+        </form>
+      </div>
+
+      <div class="bg-blue-200 p-4 rounded-lg">
+        <h3 class="font-bold text-lg">Adicionar Exame</h3>
+        <form id="addExamForm">
+          <label for="examName">Nome do Exame:</label>
+          <input type="text" id="examName" name="name" class="block mb-2" required />
+          <label for="examDate">Data do Exame:</label>
+          <input type="date" id="examDate" name="date" class="block mb-2" required />
+          <label for="examTime">Horário do Exame:</label>
+          <input type="time" id="examTime" name="time" class="block mb-2" required />
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Adicionar Exame</button>
+        </form>
+      </div>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='js/pet.js') }}"></script>
+</body>
+</html>
