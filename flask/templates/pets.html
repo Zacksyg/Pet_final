@@ -8,37 +8,86 @@
 </head>
 <body>
     <div class="container mx-auto mt-5">
-        <h1 class="text-2xl font-bold mb-4">Lista de Pets</h1>
+        <h1 class="text-2xl font-bold mb-4">Seus Pets</h1>
         <div id="petsList" class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <!-- Lista de pets será preenchida via JavaScript -->
         </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', async function() {
-            const response = await fetch('http://127.0.0.1:5001/api/pets');
-            if (response.ok) {
-                const data = await response.json();
-                const petsList = document.getElementById('petsList');
-                petsList.innerHTML = '';
-                data.pets.forEach(pet => {
-                    const petCard = document.createElement('div');
-                    petCard.classList.add('p-4', 'bg-green-200', 'rounded-lg');
-                    petCard.innerHTML = `
-                        <h2 class="text-lg font-bold">${pet.name}</h2>
-                        <p>Espécie: ${pet.species}</p>
-                        <p>Raça: ${pet.breed || 'Não especificada'}</p>
-                        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
-                            onclick="window.location.href='/meu_pet?pet_id=${pet.id}&token=${localStorage.getItem("jwt")}'">
-                            Ver Detalhes
-                        </button>
+            const token = localStorage.getItem('jwt');
 
-                    `;
-                    petsList.appendChild(petCard);
+            if (!token) {
+                alert('Você precisa estar logado para ver seus pets.');
+                return;
+            }
+
+            try {
+                // Requisição para a API
+                const response = await fetch('http://127.0.0.1:5001/api/pets', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
                 });
-            } else {
-                alert('Erro ao carregar a lista de pets.');
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Dados retornados pela API:', data);
+
+                    const userId = parseJwt(token).id; // Decodifica o token JWT
+                    console.log('ID do usuário logado:', userId);
+
+                    const petsList = document.getElementById('petsList');
+                    petsList.innerHTML = '';
+
+                    // Filtrar os pets do usuário logado pelo campo `user_id`
+                    const userPets = data.pets.filter(pet => pet.user_id === userId);
+                    console.log('Pets do usuário logado:', userPets);
+
+                    if (userPets.length === 0) {
+                        petsList.innerHTML = '<p>Você não possui pets cadastrados.</p>';
+                    } else {
+                        userPets.forEach(pet => {
+                            const petCard = document.createElement('div');
+                            petCard.classList.add('p-4', 'bg-green-200', 'rounded-lg');
+                            petCard.innerHTML = `
+                                <h2 class="text-lg font-bold">${pet.name}</h2>
+                                <p>Espécie: ${pet.species}</p>
+                                <p>Raça: ${pet.breed || 'Não especificada'}</p>
+                                <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+                                    onclick="window.location.href='/meu_pet?pet_id=${pet.id}&token=${token}'">
+                                    Ver Detalhes
+                                </button>
+                            `;
+                            petsList.appendChild(petCard);
+                        });
+                    }
+                } else {
+                    alert('Erro ao carregar a lista de pets.');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar pets:', error);
+                alert('Erro ao buscar pets.');
             }
         });
+
+        // Função para decodificar o token JWT
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(
+                    atob(base64)
+                        .split('')
+                        .map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)
+                        .join('')
+                );
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                console.error('Erro ao decodificar o token JWT:', e);
+                return null;
+            }
+        }
     </script>
 </body>
 </html>
